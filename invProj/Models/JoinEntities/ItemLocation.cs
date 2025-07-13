@@ -9,7 +9,6 @@ public class ItemLocation
     public Location Location { get; set; }
     
     public int Quantity { get; set; }
-    public string UnitName { get; set; } = "Un";
     
     public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
 }
