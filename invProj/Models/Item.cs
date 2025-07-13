@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using invProj.models.Enums;
 using invProj.models.ExternalData;
+using invProj.models.JoinEntities;
 
 namespace invProj.models;
 

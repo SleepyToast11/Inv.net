@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using invProj.models.JoinEntities;
+
 
 namespace invProj.models;
 
