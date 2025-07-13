@@ -1,4 +1,4 @@
-namespace invProj.models;
+namespace invProj.models.Search;
 
 public static class SearchDocumentMapper
 {
