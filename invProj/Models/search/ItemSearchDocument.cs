@@ -12,20 +12,5 @@ public class ItemSearchDocument
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public string ShareType { get; set; } = null!;
-
-    public ItemSearchDocument ToSearchDocument(Item item)
-    {
-        return new ItemSearchDocument
-        {
-            Id = item.Id,
-            Name = item.Name,
-            Quantity = item.Quantity,
-            GroupName = item.Group.Name,
-            UnitName = item.UnitName,
-            Tags = item.ItemTags.Select(t => t.Tag.Name).ToList(),
-            CreatedAt = item.CreatedAt,
-            UpdatedAt = item.UpdatedAt,
-            ShareType = item.ShareType.ToString()  // Enum to string
-        };
-    }
+    
 }
