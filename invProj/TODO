@@ -1,0 +1,9 @@
+Auto import: take an excel || (csv, but most will not know how) take first row as headers. Will need to make a quick wizard to config groups/units/location, then injest.
+Auto tag: take a cheap llm (simple task of classification) and make it return by bulk the tags that each item might have and include returning suggested tags, that will be reran after if accepted.
+Auto imager: Find Cheap image gen and take a backgroud from user. First pass through to check if some might not be generic (say "big white igloo cooler" or canoe), then remove them from list and generate the image with low setting.
+Exporter: If ever I need to leave and close it make something to allow people to pull to an excel file the hole thing
+
+different proj
+Auto receipts: different proj, but CV to take in receipts and find total, pass in stuff in bill to find possible cathegory and put suggestion and price to user to verify. Might accept bulk, but make sure every receipts are different
+Doc Sharer: Admin can put files with name and description and users can find the repo easily
+Camp plan helper: Help plan food, items to bring based on docs previously accepted and add option to screen doc with the checklist for ASC 

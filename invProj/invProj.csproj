@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>3704512b-4fa6-4c34-a4c3-badb36b01225</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,7 +19,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7"/>
+        <PackageReference Include="Duende.IdentityServer" Version="7.2.4"/>
+        <PackageReference Include="Meilisearch" Version="0.16.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.18"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.18"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.18"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.18"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.18">
@@ -26,6 +30,11 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.*"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Shared\Shared.csproj"/>
     </ItemGroup>
 
 </Project>
