@@ -7,14 +7,9 @@ namespace TagManagementService.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TagController: ControllerBase
+public class TagController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public TagController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
+    private readonly IMediator _mediator = mediator;
 
     [HttpPost]
     public async Task<IActionResult> CreateTag(CreateTagCommand command)
@@ -34,15 +29,19 @@ public class TagController: ControllerBase
     [HttpPut("{id}/rename")]
     public async Task<IActionResult> Rename(Guid id, [FromBody] string newName)
     {
-        await _mediator.Send(new RenameTagCommand(id, newName));
-        return NoContent();
+        var result = await _mediator.Send(new RenameTagCommand(id, newName));
+        if (!result)
+            return NotFound();
+        return Ok();
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        await _mediator.Send(new DeleteTagCommand(id));
-        return NoContent();
+        var result = await _mediator.Send(new DeleteTagCommand(id));
+        if (result) 
+            return Ok();
+        return NotFound();
     }
 
     [HttpGet]
@@ -51,4 +50,5 @@ public class TagController: ControllerBase
         var items = await _mediator.Send(new GetAllTagsQuery());
         return Ok(items);
     }
+    
 }
