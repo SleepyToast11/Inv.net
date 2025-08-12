@@ -46,4 +46,11 @@ public class SuperTagController(IMediator mediator) : ControllerBase
             return Ok();
         return NotFound();
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var superTags = _mediator.Send(new GetAllSuperTagsQuery());
+        return Ok(superTags);
+    }
 }
