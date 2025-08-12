@@ -8,7 +8,9 @@ namespace ItemManagementService.Infrastructure.UnitOfWork;
 
 public class ItemUnitOfWork(
     AppDbContext context,
-    IItemRepository itemRepository) : BaseUnitOfWork(context), IItemUnitOfWork
+    IItemRepository itemRepository,
+    ILocationRepository locationRepository) : BaseUnitOfWork(context), IItemUnitOfWork
 {
     public IItemRepository Items { get; } = itemRepository;
+    public ILocationRepository Locations { get; } = locationRepository;
 }

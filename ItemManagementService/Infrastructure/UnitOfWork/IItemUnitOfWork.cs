@@ -8,4 +8,5 @@ namespace ItemManagementService.Infrastructure.UnitOfWork;
 public interface IItemUnitOfWork: IDisposable, IUnitOfWork
 {
     IItemRepository Items { get; }
+    ILocationRepository Locations { get; }
 }

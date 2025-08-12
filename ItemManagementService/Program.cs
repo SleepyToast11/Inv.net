@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Shared.Api;
 using Shared.Domain.Item.Repositories;
+using Shared.Domain.Location.Repositories;
 using Shared.Persistence;
 using Shared.Persistence.Repositories.MultiTenancy;
 using Shared.Security;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<ICurrentTenantAccess>(sp => sp.GetRequiredService<Cur
 
 // Register UnitOfWork and repositories
 builder.Services.AddScoped<IItemUnitOfWork, ItemUnitOfWork>();
+builder.Services.AddScoped<ILocationRepository, EfMtLocationRepository>();
 builder.Services.AddScoped<IItemRepository, EfMtItemRepository>();
 
 // Add MediatR and scan for handlers
@@ -31,7 +33,18 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkBeh
 // Add controllers
 builder.Services.AddControllers();
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 
 app.UseAuthentication();
 app.UseAuthorization();
