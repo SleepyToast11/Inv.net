@@ -6,3 +6,12 @@
 /Shared/obj/
 /TagManagementService/obj/
 /UserManagementService/obj/
+
+/AuthServer/bin/
+/invProj/bin/
+/ItemManagementService/bin/
+/LocationManagementService/bin/
+/Migrations/bin/
+/Shared/bin/
+/TagManagementService/bin/
+/UserManagementService/bin/
