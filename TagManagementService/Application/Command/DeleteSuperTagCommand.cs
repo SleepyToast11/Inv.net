@@ -2,4 +2,4 @@ using MediatR;
 
 namespace TagManagementService.Application.Command;
 
-public record DeleteTagCommand(Guid id): IRequest<bool>;
+public record DeleteSuperTagCommand(Guid Id): IRequest<bool>;

@@ -30,4 +30,5 @@ public class SuperTag
             _entity.Name = newName ?? throw new ArgumentNullException(nameof(newName));
         }
     }
+    public SuperTagEntity ToEntity() => _entity;
 }
