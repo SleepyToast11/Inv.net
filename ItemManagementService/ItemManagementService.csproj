@@ -23,4 +23,8 @@
         <HintPath>..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\8.0.18\ref\net8.0\Microsoft.AspNetCore.dll</HintPath>
       </Reference>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Application\Commands\Locations\" />
+    </ItemGroup>
 </Project>

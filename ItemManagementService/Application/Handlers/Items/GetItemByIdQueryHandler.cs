@@ -1,9 +1,9 @@
-using ItemManagementService.Application.Queries;
+using ItemManagementService.Application.Queries.Items;
 using ItemManagementService.Infrastructure.Dtos;
 using ItemManagementService.Infrastructure.UnitOfWork;
 using MediatR;
 
-namespace ItemManagementService.Application.Handlers;
+namespace ItemManagementService.Application.Handlers.Items;
 
 public class GetItemByIdQueryHandler : IRequestHandler<GetItemByIdQuery, ItemDto?>
 {

@@ -1,9 +1,9 @@
-using ItemManagementService.Application.Commands;
+using ItemManagementService.Application.Commands.Items;
 using ItemManagementService.Infrastructure.UnitOfWork;
 using MediatR;
 using Shared.Domain.Item;
 
-namespace ItemManagementService.Application.Handlers;
+namespace ItemManagementService.Application.Handlers.Items;
 
 public class RemoveItemLocationCommandHandler : IRequestHandler<RemoveItemLocationCommand, bool>
 {

@@ -1,5 +1,5 @@
-using ItemManagementService.Application.Commands;
-using ItemManagementService.Application.Queries;
+using ItemManagementService.Application.Commands.Items;
+using ItemManagementService.Application.Queries.Items;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
