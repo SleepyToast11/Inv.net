@@ -1,0 +1,19 @@
+﻿services:
+  tagmanagementservice:
+    image: tagmanagementservice
+    build:
+      context: .
+      dockerfile: TagManagementService/Dockerfile
+
+  usermanagementservice:
+    image: usermanagementservice
+    build:
+      context: .
+      dockerfile: UserManagementService/Dockerfile
+
+  locationmanagementservice:
+    image: locationmanagementservice
+    build:
+      context: .
+      dockerfile: LocationManagementService/Dockerfile
+
