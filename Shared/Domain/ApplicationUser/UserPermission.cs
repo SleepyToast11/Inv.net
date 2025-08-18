@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using Shared.Persistence.Entities.ApplicationUser;
 
 namespace Shared.Domain.ApplicationUser;
@@ -19,14 +20,30 @@ public class UserPermission
             g => g.Level
         );
 
-    public IReadOnlyDictionary<string, PermissionLevel> Permissions => _permissions.AsReadOnly();
+    public ReadOnlyDictionary<string, PermissionLevel> Permissions => _permissions.AsReadOnly();
 
-    public void SetPermission(string scope, PermissionLevel level)
+    public void AddPermission(string scope, PermissionLevel level)
     {
         var index = _entity.Permissions.FindIndex(p => p.Scope == scope);
         if (index >= 0)
-            _entity.Permissions[index].Level = level;
+            throw new Exception($"Permission {scope} is already created");
 
+        //probably will only be created here, no need to go insane
+        var permissionEntity = new PermissionEntity { Id = Guid.NewGuid(), Scope = scope, Level = level };
+        
+        _entity.Permissions.Add(permissionEntity);
+        
+        _permissions[scope] = level;
+    }
+    
+    public void UpdatePermission(string scope, PermissionLevel level)
+    {
+        var index = _entity.Permissions.FindIndex(p => p.Scope == scope);
+        if (index < 0)
+            throw new Exception($"Permission {scope} does not exist");
+        
+        _entity.Permissions[index].Level = level;
+        
         _permissions[scope] = level;
     }
 

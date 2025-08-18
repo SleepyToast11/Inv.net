@@ -12,7 +12,6 @@ namespace Shared.Persistence.Repositories.Common.Generics;
 public abstract class GenericMultiTenantRepository<T> where T : class, ITenantable, IEntity
 {
     private readonly DbSet<T> _context;
-    private readonly ICurrentTenantAccess _tenantAccess;
     private readonly IReadOnlyCollection<Guid> _readTenant;
     private readonly IReadOnlyCollection<Guid> _writeTenant;
     
@@ -21,7 +20,6 @@ public abstract class GenericMultiTenantRepository<T> where T : class, ITenantab
         DefaultExtraFilter = whereFilter ?? (x => true);
         
         _context = context;
-        _tenantAccess = tenantAccess;
         
         var scope = TenantableExtensions.GetScope<T>();
 
@@ -29,16 +27,12 @@ public abstract class GenericMultiTenantRepository<T> where T : class, ITenantab
             ? w
             : Array.Empty<Guid>();
         
-        var admin = tenantAccess.AdminTenants.TryGetValue(scope, out var a)
-            ? a
-            : Array.Empty<Guid>();
-
         var readable = tenantAccess.ReadableTenants.TryGetValue(scope, out var r)
             ? r
             : Array.Empty<Guid>();
 
-        _writeTenant = new List<Guid>(writable.Union(admin));
-        _readTenant = new List<Guid>(readable.Union(_writeTenant)).AsReadOnly();
+        _writeTenant = new List<Guid>(writable);
+        _readTenant = new List<Guid>(readable);
     }
 
     public Expression<Func<T, bool>> DefaultExtraFilter { get; set; }
@@ -47,8 +41,7 @@ public abstract class GenericMultiTenantRepository<T> where T : class, ITenantab
     {
         return query;
     }
-
-
+    
     public IQueryable<T> ReadBaseQuery(bool deepLoad, Expression<Func<T, bool>>? whereFilter = null)
     {
         if (whereFilter == null)

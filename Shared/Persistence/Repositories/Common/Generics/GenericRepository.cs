@@ -80,7 +80,7 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
     }
 
 
-    public IQueryable<T> ReadBaseQuery(bool deepLoad, Expression<Func<T, bool>>? whereFilter = null)
+    public virtual IQueryable<T> ReadBaseQuery(bool deepLoad, Expression<Func<T, bool>>? whereFilter = null)
     {
         if (whereFilter == null)
             whereFilter = DefaultExtraFilter;
@@ -91,7 +91,7 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
         return deepLoad ? query : ApplyIncludes(query);
     }
 
-    public IQueryable<T> WriteBaseQuery(Expression<Func<T, bool>>? whereFilter = null)
+    public virtual IQueryable<T> WriteBaseQuery(Expression<Func<T, bool>>? whereFilter = null)
     {
         if (whereFilter == null)
             whereFilter = DefaultExtraFilter;

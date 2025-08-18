@@ -5,7 +5,8 @@ public interface ICurrentTenantAccess
     IReadOnlyDictionary<string, IReadOnlyCollection<Guid>> ReadableTenants { get; }
     IReadOnlyDictionary<string, IReadOnlyCollection<Guid>> WritableTenants { get; }
     IReadOnlyDictionary<string, IReadOnlyCollection<Guid>> AdminTenants { get; }
-
+    
+    bool SuperAdmin { get; set; }
     bool HasReadAccess(string scope, Guid tenantId);
     bool HasWriteAccess(string scope, Guid tenantId);
     bool HasAdminAccess(string scope, Guid tenantId);

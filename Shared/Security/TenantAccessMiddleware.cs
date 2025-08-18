@@ -39,6 +39,12 @@ public class TenantAccessMiddleware
             }
         }
 
+        var superAdminClaim = context.User.FindFirst("superAdmin");
+        if (superAdminClaim != null && superAdminClaim.Value.Equals("true", StringComparison.InvariantCultureIgnoreCase))
+            access.SuperAdmin = true;
+        else
+            access.SuperAdmin = false;
+        
         await _next(context);
     }
 }

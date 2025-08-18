@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-ItemManagementService-f592f6b5-a0a4-4f92-8e81-38df7e7fa1aa</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,5 +24,11 @@
       <Reference Include="Microsoft.AspNetCore">
         <HintPath>..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\8.0.18\ref\net8.0\Microsoft.AspNetCore.dll</HintPath>
       </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 </Project>

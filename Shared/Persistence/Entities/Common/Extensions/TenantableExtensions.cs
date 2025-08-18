@@ -11,8 +11,5 @@ public static class TenantableExtensions
 
         // simple example: just lowercase
         return name.ToLowerInvariant();
-
-        // or you can do pluralization or other rules here if you want
-        // e.g. return Inflector.Pluralize(name).ToLowerInvariant();
     }
 }

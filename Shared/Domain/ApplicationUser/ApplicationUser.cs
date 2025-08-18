@@ -29,12 +29,12 @@ public class ApplicationUser : IEntity
         return _tenantPermissions.FirstOrDefault(p => p.TenantId == tenantId);
     }
 
-    public UserPermission GetOrCreateTenantPermission(Guid tenantId)
+    public UserPermission CreateTenantPermission(Guid tenantId)
     {
         var existing = GetTenantPermission(tenantId);
         if (existing != null)
-            return existing;
-
+            throw new Exception($"Tenant {tenantId} is already created");
+        
         var entity = new UserPermissionEntity
         {
             TenantId = tenantId,

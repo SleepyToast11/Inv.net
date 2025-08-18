@@ -1,7 +1,8 @@
 namespace Shared.Security;
 
 public class CurrentTenantAccess : ICurrentTenantAccess
-{
+{   
+    
     private readonly Dictionary<string, HashSet<Guid>> _readable = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, HashSet<Guid>> _writable = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, HashSet<Guid>> _admin = new(StringComparer.OrdinalIgnoreCase);
@@ -12,6 +13,8 @@ public class CurrentTenantAccess : ICurrentTenantAccess
         _writable.ToDictionary(kvp => kvp.Key, kvp => (IReadOnlyCollection<Guid>)kvp.Value);
     public IReadOnlyDictionary<string, IReadOnlyCollection<Guid>> AdminTenants =>
         _admin.ToDictionary(kvp => kvp.Key, kvp => (IReadOnlyCollection<Guid>)kvp.Value);
+
+    public bool SuperAdmin { get; set; }
 
     public void AddReadable(string scope, Guid tenantId) =>
         _readable.GetOrAdd(scope).Add(tenantId);
